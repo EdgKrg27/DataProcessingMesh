@@ -1,0 +1,176 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!-- XML Utils Details: version 9.0.0. Exported at 20231222-171136 by ctrlmem from server CTRLMTYP1 -->
+<DEFTABLE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Folder.xsd">
+    <FOLDER DATACENTER="CTM_CTRLMCCR" FOLDER_NAME="CR-MXSFRDIA-T02" FOLDER_ORDER_METHOD="SYSTEM"
+            LAST_UPLOAD="20231219010252UTC" PLATFORM="UNIX" REAL_FOLDER_ID="0" TYPE="1" USED_BY_CODE="0" VERSION="919">
+        <JOB
+                APPLICATION="SFR-MX-DATIO"
+                APPL_TYPE="OS"
+                APR="1"
+                AUG="1"
+                AUTOARCH="1"
+                CHANGE_DATE="20230630"
+                CHANGE_TIME="145237"
+                CHANGE_USERID="MI05226"
+                CMDLINE="/opt/datio/sentry-mx/dataproc_sentry.py %%SENTRY_JOB %%SENTRY_OPT &apos;%%SENTRY_PARM&apos;"
+                CM_VER="N/A"
+                CONFIRM="0"
+                CREATED_BY="XM060HZ"
+                CREATION_DATE="20181016"
+                CREATION_TIME="152827"
+                CREATION_USER="XMZ0643"
+                CRITICAL="0"
+                CYCLIC="0"
+                CYCLIC_TOLERANCE="0"
+                CYCLIC_TYPE="C"
+                DAYS_AND_OR="O"
+                DEC="1"
+                DESCRIPTION="Ingesta MASTER TFR315"
+                FEB="1"
+                IND_CYCLIC="S"
+                INTERVAL="00001M"
+                JAN="1"
+                JOBISN="20"
+                JOBNAME="MSFRCP0014"
+                JUL="1"
+                JUN="1"
+                MAR="1"
+                MAXDAYS="0"
+                MAXRERUN="0"
+                MAXRUNS="0"
+                MAXWAIT="3"
+                MAY="1"
+                MEMLIB="datio"
+                MEMNAME="MSFRCP0014"
+                MULTY_AGENT="N"
+                NODEID="MX-SENTRY-00"
+                NOV="1"
+                OCT="1"
+                PARENT_FOLDER="CR-MXSFRDIA-T02"
+                RETRO="0"
+                RULE_BASED_CALENDAR_RELATIONSHIP="O"
+                RUN_AS="sentry"
+                SEP="1"
+                SHIFT="Ignore Job"
+                SHIFTNUM="+00"
+                SUB_APPLICATION="REG-DATIO-CCR"
+                SYSDB="1"
+                TASKTYPE="Command"
+                USE_INSTREAM_JCL="N"
+                WEEKDAYS="ALL"
+                WEEKSCAL="MXDIARIO">
+            <INCOND AND_OR="A" NAME="MSFRCP0013-TO-MSFRCP0014" ODATE="ODAT"/>
+            <OUTCOND NAME="MSFRCP0014-TO-MSFRVP0044" ODATE="ODAT" SIGN="+"/>
+            <OUTCOND NAME="MSFRCP0013-TO-MSFRCP0014" ODATE="ODAT" SIGN="-"/>
+            <QUANTITATIVE NAME="DATIO_SENTRY_MX" ONFAIL="R" ONOK="R" QUANT="1"/>
+            <VARIABLE NAME="%%PARM1" VALUE="%%$ODATE"/>
+            <VARIABLE NAME="%%A" VALUE="%%SUBSTR %%PARM1 1 4"/>
+            <VARIABLE NAME="%%M" VALUE="%%SUBSTR %%PARM1 5 2"/>
+            <VARIABLE NAME="%%D" VALUE="%%SUBSTR %%PARM1 7 2"/>
+            <VARIABLE NAME="%%PARM2" VALUE="%%A-%%M-%%D"/>
+            <VARIABLE NAME="%%SENTRY_JOB"
+                      VALUE="-ns mx.msfr.app-id-22245.pro -jn msfr-mx-krb-inm-tfr315r-01 -o %%ORDERID"/>
+            <VARIABLE NAME="%%SENTRY_OPT" VALUE="-b"/>
+            <VARIABLE NAME="%%SENTRY_PARM"
+                      VALUE="{&quot;env&quot;:{&quot;DATE&quot;:&quot;%%PARM2&quot;,&quot;KIRBY_MODE&quot;:&quot;reprocess&quot;,&quot;KIRBY_REPARTITION&quot;:&quot;1&quot;,&quot;CONTROLM_JOB_ID&quot;:&quot;%%JOBNAME&quot;,&quot;CONTROLM_JOB_FLOW&quot;:&quot;%%SCHEDTAB&quot;}}"/>
+            <ON CODE="OK" STMT="*">
+                <DOMAIL ATTACH_SYSOUT="Y" CC_DEST="anaelvira.andrade.jimenez@bbva.com"
+                        DEST="beta@datiobd.com; sergio.moran.blanco@bbva.com"
+                        MESSAGE="0123Concluyo la ejecucion para la ingesta en Master del job %%JOBNAME del proceso  TFR315 con Odate %%$ODATE, favor de validar."
+                        SUBJECT="Ejecucion exitosa del job %%JOBNAME - Ingesta en Master - TFR315 - Odate %%$ODATE"
+                        URGENCY="R"/>
+            </ON>
+            <ON CODE="NOTOK" STMT="*">
+                <DOMAIL ATTACH_SYSOUT="Y"
+                        CC_DEST="anaelvira.andrade.jimenez@bbva.com; david.ramos.2@bbva.com; ruben.barrado2@bbva.com; support@datiobd.com"
+                        DEST="beta@datiobd.com; sergio.moran.blanco@bbva.com"
+                        MESSAGE="0120No se pudo realizar la ingesta en Master para el job %%JOBNAME del proceso TFR315, con Odate %%$ODATE, favor de validar."
+                        SUBJECT="Fallo el job %%JOBNAME - Ingesta en Master - TFR315 - Odate %%$ODATE" URGENCY="U"/>
+            </ON>
+        </JOB>
+        <JOB
+                APPLICATION="LMA-MX-DATIO"
+                APPL_TYPE="OS"
+                APR="1"
+                AUG="1"
+                AUTOARCH="1"
+                CHANGE_DATE="20230901"
+                CHANGE_TIME="132130"
+                CHANGE_USERID="MI05227"
+                CMDLINE="/opt/datio/sentry-mx/dataproc_sentry.py %%SENTRY_JOB %%SENTRY_OPT &apos;%%SENTRY_PARM&apos;"
+                CM_VER="N/A"
+                CONFIRM="0"
+                CREATED_BY="XMY0305"
+                CREATION_DATE="20200615"
+                CREATION_TIME="195007"
+                CREATION_USER="XMZ0643"
+                CRITICAL="0"
+                CYCLIC="0"
+                CYCLIC_TOLERANCE="0"
+                CYCLIC_TYPE="C"
+                DAYSCAL="MXHABILE"
+                DAYS_AND_OR="O"
+                DEC="1"
+                DESCRIPTION="Ingesta RAW TPL045"
+                FEB="1"
+                IND_CYCLIC="S"
+                INTERVAL="00001M"
+                JAN="1"
+                JOBISN="50"
+                JOBNAME="MLMACP0017"
+                JUL="1"
+                JUN="1"
+                MAR="1"
+                MAXDAYS="0"
+                MAXRERUN="0"
+                MAXRUNS="0"
+                MAXWAIT="3"
+                MAY="1"
+                MULTY_AGENT="N"
+                NODEID="MX-SENTRY-00"
+                NOV="1"
+                OCT="1"
+                PARENT_FOLDER="CR-MXLMADIA-T02"
+                RETRO="0"
+                RULE_BASED_CALENDAR_RELATIONSHIP="O"
+                RUN_AS="sentry"
+                SEP="1"
+                SHIFT="Ignore Job"
+                SHIFTNUM="+00"
+                SUB_APPLICATION="REG-DATIO-CCR"
+                SYSDB="1"
+                TASKTYPE="Command"
+                USE_INSTREAM_JCL="N"
+                WEEKDAYS="1,2,3,4,5">
+            <INCOND AND_OR="A" NAME="MLMAVP0025-TO-MLMACP0017" ODATE="ODAT"/>
+            <OUTCOND NAME="MLMAVP0025-TO-MLMACP0017" ODATE="ODAT" SIGN="-"/>
+            <OUTCOND NAME="MLMACP0017-TO-MLMACP0018" ODATE="ODAT" SIGN="+"/>
+            <QUANTITATIVE NAME="DATIO_SENTRY_MX" ONFAIL="R" ONOK="R" QUANT="1"/>
+            <VARIABLE NAME="%%PARM3" VALUE="%%$ODATE"/>
+            <VARIABLE NAME="%%PARM1" VALUE="%%$WCALC %%$ODATE +1 MXHABILE"/>
+            <VARIABLE NAME="%%A" VALUE="%%SUBSTR %%PARM1 1 4"/>
+            <VARIABLE NAME="%%M" VALUE="%%SUBSTR %%PARM1 5 2"/>
+            <VARIABLE NAME="%%D" VALUE="%%SUBSTR %%PARM1 7 2"/>
+            <VARIABLE NAME="%%PARM2" VALUE="%%A-%%M-%%D"/>
+            <VARIABLE NAME="%%SENTRY_JOB"
+                      VALUE="-ns mx.mlma.app-id-22184.pro -jn mlma-mx-krb-inr-tpl045tpcambiooficialr-01 -o %%ORDERID"/>
+            <VARIABLE NAME="%%SENTRY_OPT" VALUE="-b"/>
+            <VARIABLE NAME="%%SENTRY_PARM"
+                      VALUE="{&quot;env&quot;:  { &quot;ODATE&quot;: &quot;%%PARM2&quot;,&quot;HOST_DATE&quot;: &quot;%%PARM3&quot;,&quot;KIRBY_REPARTITION&quot;:&quot;1&quot;,&quot;CONTROLM_JOB_ID&quot;:&quot;%%JOBNAME&quot;,&quot;CONTROLM_JOB_FLOW&quot;:&quot;%%SCHEDTAB&quot; } }"/>
+            <SHOUT DAYSOFFSET="0" DEST="EM" MESSAGE="0025Limite de tiempo excedido" TIME="&gt;090" URGENCY="R"
+                   WHEN="EXECTIME"/>
+            <ON CODE="NOTOK" STMT="*">
+                <DOMAIL ATTACH_SYSOUT="Y" DEST="servicing.data.enterprise.mx@bbva.com"
+                        MESSAGE="0117No se pudo realizar la ingesta en Raw para el job %%JOBNAME del proceso TPL045, con Odate %%$ODATE, favor de validar."
+                        SUBJECT="Fallo el job %%JOBNAME - Ingesta en Raw - Proceso TPL045 - Odate %%$ODATE"
+                        URGENCY="U"/>
+            </ON>
+            <ON CODE="OK" STMT="*">
+                <DOMAIL ATTACH_SYSOUT="Y" DEST="servicing.data.enterprise.mx@bbva.com"
+                        MESSAGE="0119Concluyo la ejecucion para la ingesta en Raw del job %%JOBNAME del proceso TPL045 con Odate %%$ODATE, favor de validar."
+                        SUBJECT="Ejecucion exitosa del job %%JOBNAME - Ingesta en Raw - Proceso TPL045 - Odate %%$ODATE"
+                        URGENCY="R"/>
+            </ON>
+        </JOB>
+    </FOLDER>
+</DEFTABLE>
