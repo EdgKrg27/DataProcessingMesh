@@ -78,3 +78,8 @@ def proc_mallas(data_path, output_path):
 
     wb.save(output_path)
     print('** Archivo excel creado con exito **')
+
+
+mesh_path = '/home/edgar-gonzalez/Escritorio/desarrollos/python/DataProcessingMesh/data/CR-MXSFRDIA-T02.xml'
+output_path = 'data.xlsx'
+proc_mallas(mesh_path, output_path)
