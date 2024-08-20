@@ -22,14 +22,20 @@ def proc_mallas(data_path, output_path):
         for key, value in folder.attrib.items():
             if key == 'FOLDER_NAME':
                 print(key, " ", value)
+                sheet.cell(rowJobName, column_key, key)
+                sheet.cell(rowJobName, column_value, value)
         for jobs in folder:
-            print(column_key, " ", column_value)
             for key, value in jobs.attrib.items():
                 if key == 'JOBNAME':
                     print(key, " ", value)
+                    sheet.cell(rowData, column_key, key)
+                    sheet.cell(rowData, column_value, value)
                     rowData += 1
-            column_key += 2
-            column_value += 2
+            print("-----------------")
+            sheet.cell(rowData, column_key, "-----")
+            sheet.cell(rowData, column_value, "-----")
+            # column_key += 2
+            # column_value += 2
 
-    # wb.save(output_path)
+    wb.save(output_path)
     print('** Archivo excel creado con exito **')
